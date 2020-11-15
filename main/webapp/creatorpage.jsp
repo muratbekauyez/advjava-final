@@ -30,7 +30,6 @@
             }else{
                 resultSet = statement.executeQuery(query); //execute query to display name
                 resultSet.next();
-                session.setAttribute("creator","yes");
             }
 
 
@@ -78,6 +77,43 @@
     %>
 
 </table>
+<h3>Add new columns</h3>
+<form action="CreatorInsertServlet" method="post">
+    <table>
+        <tr>
+            <td><label>Title</label></td>
+            <td><input type="text" name="title" placeholder="title"> <br></td>
+        </tr>
+        <tr>
+            <td><label>Content</label></td>
+            <td><textarea name="content" placeholder="Content..."></textarea> <br></td>
+        </tr>
+        <tr>
+            <td><label>Type</label></td>
+            <td>
+                <select name="type">
+                    <option value="club">Club</option>
+                    <option value="event">Event</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><input type="submit" name="insert" value="Add"></td>
+        </tr>
+    </table>
+
+
+
+
+
+
+
+
+
+</form>
+
 <form method="post" action="LogoutServlet">
     <input type="submit" name="logout" value="Log Out">
 </form>

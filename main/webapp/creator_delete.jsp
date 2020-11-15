@@ -8,18 +8,10 @@
     <title>Title</title>
 </head>
 <body>
-<%
-    try {
-        if(!(session.getAttribute("creator").equals("yes"))){
-            response.sendRedirect("login.jsp");
-        }
-    }catch (Exception e){
-        response.sendRedirect("login.jsp");
-    }
-%>
+
 <form method="get" action="CreatorDeleteServlet">
     <input type="text" name="id" value="<%=request.getParameter("id")%>" hidden>
-    <input type="submit" placeholder="Confirm">
+    <input type="submit" value="Confirm">
 </form>
 
 </body>

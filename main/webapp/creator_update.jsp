@@ -8,11 +8,7 @@
     <title>Title</title>
 </head>
 <body>
-<%
-    if(!(session.getAttribute("creator").equals("yes"))){
-        response.sendRedirect("login.jsp");
-    }
-%>
+
 <form method="get" action="CreatorUpdateServlet">
     <input type="text" name="id" value="<%=request.getParameter("id")%>" hidden>
     <input type="text" name="title" placeholder="Title"> <br>

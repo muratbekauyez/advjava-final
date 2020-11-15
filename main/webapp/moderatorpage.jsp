@@ -48,7 +48,7 @@
     <%
         Connection connection = LibraryDatabase.getInstance().getConnection();
 
-        String query = "SELECT title, content FROM threads WHERE status IN ('news')";
+        String query = "SELECT title, content, id FROM threads WHERE status IN ('news') ORDER BY id";
         Statement statement;
         ResultSet resultSet;
         try {
@@ -57,12 +57,10 @@
             while (resultSet.next()) {
     %>
     <tr>
-        <td><%=resultSet.getString(1)%>
-        </td>
-        <td><%=resultSet.getString(2)%>
-        </td>
-        <td>Update</td>
-        <td>Delete</td>
+        <td><%=resultSet.getString(1)%></td>
+        <td><%=resultSet.getString(2)%></td>
+        <td><a href="moderator_update.jsp?id=<%=resultSet.getInt(3)%>"> Update</a></td>
+        <td><a href="moderator_delete.jsp?id=<%=resultSet.getInt(3)%>"> Delete</a></td>
     </tr>
 
     <%
@@ -71,7 +69,27 @@
             System.out.println("ERROR OCCURED: " + throwables.getMessage());
         }
     %>
+
 </table>
+
+<h3>Add new columns</h3>
+<form action="ModeratorInsertServlet" method="post">
+    <table>
+        <tr>
+            <td><label>Title</label></td>
+            <td><input type="text" name="title" placeholder="title"> <br></td>
+        </tr>
+        <tr>
+            <td><label>Content</label></td>
+            <td><textarea name="content" placeholder="Content..."></textarea> <br></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><input type="submit" name="insert" value="Add"></td>
+        </tr>
+    </table>
+</form>
 
 <form method="post" action="LogoutServlet">
     <input type="submit" name="logout" value="Log Out">
