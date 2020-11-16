@@ -25,6 +25,7 @@ public class CreatorUpdateServlet extends HttpServlet {
             ps.executeUpdate();
             ps.close();
             response.sendRedirect("creatorpage.jsp");
+            connection.close();
         }catch (Exception throwables){
             System.out.println("ERROR OCCURED: " + throwables.getMessage());
         }

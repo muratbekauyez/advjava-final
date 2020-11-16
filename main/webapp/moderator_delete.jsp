@@ -13,9 +13,9 @@
         <h2>moderator_delete.jsp</h2>
         <form method="get" action="ModeratorDeleteServlet">
             <div class="user-box">
-                <input type="text" name="id" hidden>
+                <input type="text" name="id" value="<%=request.getParameter("id")%>" hidden>
                 <label>
-                    <%=request.getParameter("id")%>
+
                 </label>
             </div>
             <button type="submit">

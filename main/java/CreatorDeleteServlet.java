@@ -25,6 +25,7 @@ public class CreatorDeleteServlet extends HttpServlet {
             preparedStatement.executeUpdate();
             preparedStatement.close();
             response.sendRedirect("creatorpage.jsp");
+            connection.close();
         }catch (Exception throwables){
             System.out.println("ERROR OCCURED: " + throwables.getMessage());
         }

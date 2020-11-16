@@ -61,6 +61,7 @@ public class LoginServlet extends HttpServlet {
                 } else if (resultSet.getInt(1) == 4) {
                     response.sendRedirect("moderatorpage.jsp");
                 }
+
                 Cookie usernameCookie = new Cookie("username",username);
                 response.addCookie(usernameCookie);
                 usernameCookie.setMaxAge(3600);
@@ -77,7 +78,10 @@ public class LoginServlet extends HttpServlet {
                 String message = "Incorrect login or password";
                 request.setAttribute("message", message);
                 request.getRequestDispatcher("login.jsp").forward(request, response);
+
             }
+            connection.close();
+
         } catch (SQLException throwables) {
             System.out.println("ERROR OCCURED: " + throwables.getMessage());
         }

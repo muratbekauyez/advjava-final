@@ -29,17 +29,18 @@
             resultSet.next();
             if (resultSet.getInt(1) != 3) { //check the role if it's creator
                 request.getRequestDispatcher("mainpage.jsp").forward(request, response); //redirect to login page
-            }else{
+            } else {
                 resultSet = statement.executeQuery(query); //execute query to display name
                 resultSet.next();
             }
 
 
 %>
-<h1>Creator page: 
+<h1>Creator page:
     <%=resultSet.getString(1)%>
-        </h1>
+</h1>
 <%
+            connection.close();
         } catch (SQLException throwables) {
             System.out.println("ERROR OCCURED: " + throwables.getMessage());
         }
@@ -68,24 +69,26 @@
     <tr>
         <td>
             <%=resultSet.getString(1)%>
-                </td>
+        </td>
         <td>
             <%=resultSet.getString(2)%>
-                </td>
+        </td>
         <td><a href="creator_update.jsp?id=<%=resultSet.getInt(3)%>">Update</a></td>
         <td><a href="creator_delete.jsp?id=<%=resultSet.getInt(3)%>">Delete</a></td>
     </tr>
 
     <%
+
             }
+            connection.close();
         } catch (SQLException throwables) {
             System.out.println("ERROR OCCURED: " + throwables.getMessage());
         }
     %>
 
 </table>
-    
-    
+
+
 <h3 style="text-align: center;">Add new columns</h3>
 <form action="CreatorInsertServlet" method="post">
     <table class="container">
@@ -112,32 +115,36 @@
             <td></td>
             <td>
                 <button type="submit" name="insert" class="insertButton">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Add
-            </button>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Add
+                </button>
             </td>
         </tr>
-            </tbody>
+        </tbody>
     </table>
 
 </form>
 
-    
-    
-    
+
 <div class="login-box">
-<form method="post" action="LogoutServlet">
-    <button type="submit" name="logout" style="margin-left: 29%;">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Log Out
-            </button>
-</form>
+    <form method="post" action="LogoutServlet">
+        <button type="submit" name="logout" style="margin-left: 29%;">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Log Out
+        </button>
+        <br>
+        <br>
+        <div class="user-box">
+            <a href="mainpage.jsp" style="margin: 0 0 0 43%;">Home</a> <br>
+            <a href="students.jsp" style="margin: 0 0 0 35%;">Students List</a>
+        </div>
+    </form>
 </div>
 
 </body>

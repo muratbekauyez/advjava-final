@@ -25,6 +25,7 @@ public class ModeratorUpdateServlet extends HttpServlet {
             ps.executeUpdate();
             ps.close();
             response.sendRedirect("moderatorpage.jsp");
+            connection.close();
         }catch (Exception throwables){
             System.out.println("ERROR OCCURED: " + throwables.getMessage());
         }

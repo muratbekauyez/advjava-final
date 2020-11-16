@@ -26,6 +26,7 @@ public class ModeratorInsertServlet extends HttpServlet {
             ps.executeUpdate();
             ps.close();
             request.getRequestDispatcher("moderatorpage.jsp").forward(request, response);
+            connection.close();
         }catch (SQLException throwables){
             System.out.println("ERROR OCCURED: " + throwables.getMessage());
         }

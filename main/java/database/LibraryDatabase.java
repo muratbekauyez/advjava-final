@@ -54,6 +54,7 @@ public class LibraryDatabase {
                 myThread = new MyThread(threadFields);
                 threadList.add(myThread);
             }
+            ps.close();
         }catch (SQLException throwables){
             throwables.printStackTrace();
         }

@@ -25,6 +25,7 @@ public class ModeratorDeleteServlet extends HttpServlet {
             preparedStatement.executeUpdate();
             preparedStatement.close();
             response.sendRedirect("moderatorpage.jsp");
+            connection.close();
         }catch (Exception throwables){
             System.out.println("ERROR OCCURED: " + throwables.getMessage());
         }

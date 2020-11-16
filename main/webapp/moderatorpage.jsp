@@ -14,7 +14,7 @@
 <body>
 <%
     if (session.getAttribute("id") == null) {//check if session is null
-        response.sendRedirect("login.jsp");//redirect to login page
+        response.sendRedirect("login.jsp");//redirect to login page-->
     } else {
         /*get the id of loginned user*/
         Integer id = Integer.parseInt(session.getAttribute("id").toString());
@@ -31,8 +31,8 @@
             resultSet = statement.executeQuery(query); //execute query to display name
             resultSet.next();
 %>
-<h1>Moderator page: 
-<!--    <%=resultSet.getString(1)%>-->
+<h1>Moderator page:
+    <%=resultSet.getString(1)%>
 </h1>
 <%
         } catch (SQLException throwables) {
@@ -62,16 +62,17 @@
     <tr>
         <td>
             <%=resultSet.getString(1)%>
-                </td>
+        </td>
         <td>
             <%=resultSet.getString(2)%>
-                </td>
+        </td>
         <td><a href="moderator_update.jsp?id=<%=resultSet.getInt(3)%>"> Update</a></td>
         <td><a href="moderator_delete.jsp?id=<%=resultSet.getInt(3)%>"> Delete</a></td>
     </tr>
 
     <%
             }
+            connection.close();
         } catch (SQLException throwables) {
             System.out.println("ERROR OCCURED: " + throwables.getMessage());
         }
@@ -96,28 +97,34 @@
             <td></td>
             <td>
                 <button type="submit" name="insert" class="insertButton">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Add
-            </button>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Add
+                </button>
             </td>
         </tr>
-            </tbody>
+        </tbody>
     </table>
 </form>
 
 <div class="login-box">
-<form method="post" action="LogoutServlet">
-    <button type="submit" name="logout" style="margin-left: 29%;">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Log Out
-            </button>
-</form>
+    <form method="post" action="LogoutServlet">
+        <button type="submit" name="logout" style="margin-left: 29%;">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Log Out
+        </button>
+        <br>
+        <br>
+        <div class="user-box">
+            <a href="mainpage.jsp" style="margin: 0 0 0 43%;">Home</a> <br>
+            <a href="students.jsp" style="margin: 0 0 0 35%;">Students List</a>
+        </div>
+    </form>
 </div>
 </body>
 </html>

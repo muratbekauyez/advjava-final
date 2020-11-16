@@ -24,10 +24,11 @@
             ResultSet resultSet = statement.executeQuery(query);
             resultSet.next();
 %>
-<h1>Students List: 
+<h1>Students List:
     <%=resultSet.getString(1)%>
 </h1>
 <%
+            connection.close();
         } catch (SQLException throwables) {
             System.out.println("ERROR OCCURED: " + throwables.getMessage());
         }
@@ -57,37 +58,38 @@
     <tr>
         <td>
             <%=resultSet.getString(1)%>
-                </td>
+        </td>
         <td>
             <%=resultSet.getString(2)%>
-                </td>
+        </td>
         <td>
             <%=resultSet.getString(3)%>
-                </td>
+        </td>
         <td>
             <%=resultSet.getString(4)%>
-                </td>
+        </td>
         <td>
             <%=resultSet.getInt(5)%>
-                </td>
+        </td>
     </tr>
 
     <%
             }
+            connection.close();
         } catch (SQLException throwables) {
             System.out.println("ERROR OCCURED: " + throwables.getMessage());
         }
     %>
 
 </table>
-    
+
 <div class="login-box">
     <form>
         <div class="user-box">
-        <a href="mainpage.jsp" style="margin: 0 0 0 43%;">Home</a>
-    </div>
+            <a href="mainpage.jsp" style="margin: 0 0 0 43%;">Home</a>
+        </div>
 
     </form>
-    </div>
+</div>
 </body>
 </html>

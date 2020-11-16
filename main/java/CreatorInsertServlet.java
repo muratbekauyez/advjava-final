@@ -26,8 +26,8 @@ public class CreatorInsertServlet extends HttpServlet {
             ps.setString(3,type);
             ps.executeUpdate();
             ps.close();
-            connection.close();
             request.getRequestDispatcher("creatorpage.jsp").forward(request, response);
+            connection.close();
         }catch (SQLException throwables){
             System.out.println("ERROR OCCURED: " + throwables.getMessage());
         }

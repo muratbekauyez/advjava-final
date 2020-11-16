@@ -11,24 +11,24 @@
 </head>
 
 <body>
-    <div class="login-box">
-        <h2>creator_delete.jsp</h2>
-        <form method="get" action="CreatorDeleteServlet">
-            <div class="user-box">
-                <input type="text" name="id" hidden>
-                <label>
-                    <%=request.getParameter("id")%>
-                </label>
-            </div>
-            <button type="submit">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Confirm
-            </button>
-        </form>
-    </div>
+<div class="login-box">
+    <h2>creator_delete.jsp</h2>
+    <form method="get" action="CreatorDeleteServlet">
+        <div class="user-box">
+            <input type="text" name="id"  value="<%=request.getParameter("id")%>" hidden>
+            <label>
+
+            </label>
+        </div>
+        <button type="submit">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Confirm
+        </button>
+    </form>
+</div>
 </body>
 
 </html>
