@@ -6,6 +6,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+
+import com.google.gson.Gson;
 import tools.*;
 
 import database.*;
@@ -17,6 +20,17 @@ import database.*;
 public class LoginServlet extends HttpServlet {
     public User user = new User("","");
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String submit = request.getParameter("submit");
+        if(submit.equals("search")){
+            String title = request.getParameter("title");
+            ArrayList<MyThread> threadList = LibraryDatabase.getInstance().search(title);
+            response.setContentType("text/html;charset=UTF-8");
+            String json = new Gson().toJson(threadList);
+            response.getWriter().write(json);
+            return;
+        }
+
+
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         Connection connection = LibraryDatabase.getInstance().getConnection();

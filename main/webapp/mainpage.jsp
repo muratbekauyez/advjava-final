@@ -8,6 +8,8 @@
 <html>
 <head>
     <title>Profile</title>
+    <link href="Styles/tableStyle.css" rel="stylesheet" type="text/css">
+    <link href="Styles/cssAlternate.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <%
@@ -24,19 +26,47 @@
             ResultSet resultSet = statement.executeQuery(query);
             resultSet.next();
 %>
-<h1>Main Page: <%=resultSet.getString(1)%>
+<h1>Main Page: 
+    <%=resultSet.getString(1)%>
 </h1>
+<script>
+    function searchBook(){
+        var xhttp = new XMLHttpRequest();
+        var title = document.getElementById("searchId").value;
+        xhttp.onreadystatechange = function (){
+            if(this.readyState == 4 && this.status == 200){
+                var bookList = JSON.parse(this.responseText);
+                if(bookList.length>0){
+                    document.getElementById("title").value = bookList[0].title;
+                    document.getElementById("content").value = bookList[0].content;
+                }else {
+                    document.getElementById("searchId").value = "Nothing was found by " + title;
+                }
+            }
+        };
+        xhttp.open("POST","${pageContext.request.contextPath}/LoginServlet", true);
+        xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        xhttp.send("submit=search&title="+title);
+    }
+
+</script>
+<input type="text" id="searchId" placeholder="Title name" name="search">
+<input type="button" name="search" value="search" onclick="searchBook()">
 <%
         } catch (SQLException throwables) {
             System.out.println("ERROR OCCURED: " + throwables.getMessage());
         }
     }
 %>
-<table>
+<table class="container">
     <tr>
         <th>Title</th>
         <th>Content</th>
 
+    </tr>
+    <tr>
+        <th><input type="text" id="title"></input> </th>
+        <th><input type="text" id="content"></input></th>
     </tr>
     <%
         Connection connection = LibraryDatabase.getInstance().getConnection();
@@ -50,8 +80,12 @@
             while (resultSet.next()) {
     %>
     <tr>
-        <td><%=resultSet.getString(1)%></td>
-        <td><%=resultSet.getString(2)%></td>
+        <td>
+            <%=resultSet.getString(1)%>
+                </td>
+        <td>
+            <%=resultSet.getString(2)%>
+                </td>
     </tr>
 
     <%
@@ -63,11 +97,22 @@
 
 </table>
 
+    <div class="login-box">
 <form method="post" action="LogoutServlet">
-    <input type="submit" name="logout" value="Log Out">
+    <button type="submit" name="logout" style="margin-left: 29%;">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Log Out
+            </button>
+    <br>
+    <br>
+    <div class="user-box">
+        <a href="students.jsp" style="margin: 0 0 0 35%;">Students List</a>
+    </div>
 </form>
-<br>
-<a href="students.jsp">Students List</a>
 
+    </div>
 </body>
 </html>

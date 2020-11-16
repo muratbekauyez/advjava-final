@@ -3,17 +3,38 @@
 <html>
 <head>
     <title>Authorisation</title>
+    <link href="Styles/css.css" rel="stylesheet" type="text/css">
 </head>
-<body>
-<form method="post" action="LoginServlet">
-    <input type="text" name="username" placeholder="Username"> <br>
-    <input type="password" name="password" placeholder="Password"><br> <br>
 
-    <input type="submit" name="submit" value="Submit"><br>
-</form>
+<body>
+    <div class="login-box">
+        <h2>login.jsp</h2>
+        <form method="post" action="LoginServlet">
+            <div class="user-box">
+                <input type="text" name="username">
+                <label>Username</label>
+            </div>
+
+            <div class="user-box">
+                <input type="password" name="password">
+                <label>Password</label>
+            </div>
+
+            <button type="submit" name="submit">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Submit
+            </button>
+            <h6>
+                <%=request.getAttribute("message")%>
+        </h6>
+        </form>
+    </div>
+
 <%
-    User user = new User(request.getParameter("username"),request.getParameter("password"));
 %>
-<h6><%=request.getAttribute("message")%></h6>
-</body>
-</html>
+
+
+</body></html>

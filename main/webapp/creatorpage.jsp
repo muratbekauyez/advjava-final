@@ -9,6 +9,8 @@
 
 <head>
     <title>Creator Page</title>
+    <link href="Styles/tableStyle.css" rel="stylesheet" type="text/css">
+    <link href="Styles/cssAlternate.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <%
@@ -34,8 +36,9 @@
 
 
 %>
-<h1>Creator page: <%=resultSet.getString(1)%>
-</h1>
+<h1>Creator page: 
+    <%=resultSet.getString(1)%>
+        </h1>
 <%
         } catch (SQLException throwables) {
             System.out.println("ERROR OCCURED: " + throwables.getMessage());
@@ -44,7 +47,7 @@
     }
 
 %>
-<table>
+<table class="container">
     <tr>
         <th>Title</th>
         <th>Content</th>
@@ -63,10 +66,14 @@
             while (resultSet.next()) {
     %>
     <tr>
-        <td><%=resultSet.getString(1)%></td>
-        <td><%=resultSet.getString(2)%></td>
-        <td><a href="creator_update.jsp?id=<%=resultSet.getInt(3)%>"> Update</a></td>
-        <td><a href="creator_delete.jsp?id=<%=resultSet.getInt(3)%>"> Delete</a></td>
+        <td>
+            <%=resultSet.getString(1)%>
+                </td>
+        <td>
+            <%=resultSet.getString(2)%>
+                </td>
+        <td><a href="creator_update.jsp?id=<%=resultSet.getInt(3)%>">Update</a></td>
+        <td><a href="creator_delete.jsp?id=<%=resultSet.getInt(3)%>">Delete</a></td>
     </tr>
 
     <%
@@ -77,12 +84,15 @@
     %>
 
 </table>
-<h3>Add new columns</h3>
+    
+    
+<h3 style="text-align: center;">Add new columns</h3>
 <form action="CreatorInsertServlet" method="post">
-    <table>
+    <table class="container">
+        <tbody>
         <tr>
             <td><label>Title</label></td>
-            <td><input type="text" name="title" placeholder="title"> <br></td>
+            <td><input type="text" name="title" placeholder="Title"> <br></td>
         </tr>
         <tr>
             <td><label>Content</label></td>
@@ -100,23 +110,35 @@
 
         <tr>
             <td></td>
-            <td><input type="submit" name="insert" value="Add"></td>
+            <td>
+                <button type="submit" name="insert" class="insertButton">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Add
+            </button>
+            </td>
         </tr>
+            </tbody>
     </table>
 
-
-
-
-
-
-
-
-
 </form>
 
+    
+    
+    
+<div class="login-box">
 <form method="post" action="LogoutServlet">
-    <input type="submit" name="logout" value="Log Out">
+    <button type="submit" name="logout" style="margin-left: 29%;">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Log Out
+            </button>
 </form>
+</div>
 
 </body>
 </html>

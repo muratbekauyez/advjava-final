@@ -4,15 +4,29 @@
 <%@ page import="java.sql.ResultSet" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
+<!--<head>-->
     <title>Title</title>
+    <link href="Styles/css.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-
-<form method="get" action="ModeratorDeleteServlet">
-    <input type="text" name="id" value="<%=request.getParameter("id")%>" hidden>
-    <input type="submit" placeholder="Confirm">
-</form>
+    <div class="login-box">
+        <h2>moderator_delete.jsp</h2>
+        <form method="get" action="ModeratorDeleteServlet">
+            <div class="user-box">
+                <input type="text" name="id" hidden>
+                <label>
+                    <%=request.getParameter("id")%>
+                </label>
+            </div>
+            <button type="submit">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Confirm
+            </button>
+        </form>
+    </div>
 
 </body>
 </html>

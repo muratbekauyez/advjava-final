@@ -1,9 +1,13 @@
 package tools;
 
+import com.google.gson.Gson;
+
 public class User {
     int id;
     String fname, lname, major;
     String username, password;
+    
+
 
     public User (String username, String password){
         this.username = username;

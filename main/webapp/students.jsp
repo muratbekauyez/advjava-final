@@ -7,6 +7,8 @@
 <html>
 <head>
     <title>Title</title>
+    <link href="Styles/tableStyle.css" rel="stylesheet" type="text/css">
+    <link href="Styles/cssAlternate.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <%
@@ -22,7 +24,8 @@
             ResultSet resultSet = statement.executeQuery(query);
             resultSet.next();
 %>
-<h1>Students List: <%=resultSet.getString(1)%>
+<h1>Students List: 
+    <%=resultSet.getString(1)%>
 </h1>
 <%
         } catch (SQLException throwables) {
@@ -30,7 +33,7 @@
         }
     }
 %>
-<table>
+<table class="container">
     <tr>
         <th>Username</th>
         <th>First Name</th>
@@ -52,11 +55,21 @@
             while (resultSet.next()) {
     %>
     <tr>
-        <td><%=resultSet.getString(1)%></td>
-        <td><%=resultSet.getString(2)%></td>
-        <td><%=resultSet.getString(3)%></td>
-        <td><%=resultSet.getString(4)%></td>
-        <td><%=resultSet.getInt(5)%></td>
+        <td>
+            <%=resultSet.getString(1)%>
+                </td>
+        <td>
+            <%=resultSet.getString(2)%>
+                </td>
+        <td>
+            <%=resultSet.getString(3)%>
+                </td>
+        <td>
+            <%=resultSet.getString(4)%>
+                </td>
+        <td>
+            <%=resultSet.getInt(5)%>
+                </td>
     </tr>
 
     <%
@@ -67,7 +80,14 @@
     %>
 
 </table>
-<br>
-<a href="mainpage.jsp">Home</a>
+    
+<div class="login-box">
+    <form>
+        <div class="user-box">
+        <a href="mainpage.jsp" style="margin: 0 0 0 43%;">Home</a>
+    </div>
+
+    </form>
+    </div>
 </body>
 </html>
