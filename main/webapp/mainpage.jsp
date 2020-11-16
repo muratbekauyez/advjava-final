@@ -60,7 +60,21 @@
         }
     }
 %>
-
+<div class="login-box" style="margin-top: 10%">
+    <form action="#">
+        <div class="user-box">
+            <input type="text" id="searchId" placeholder="" name="search">
+            <label>Title name</label>
+        </div>
+        <button type="button" name="search" value="Search" onclick="searchBook()" style="margin: auto 29%;">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Search
+        </button>
+    </form>
+</div>
 <table class="container">
     <tr>
         <th>Title</th>
@@ -68,8 +82,9 @@
 
     </tr>
     <tr>
-        <th><input type="text" id="title"></th>
-        <th><input type="text" id="content"></th>
+        <th><textarea type="text" id="title"></textarea></th>
+
+        <th><textarea type="text" id="content" readonly></textarea></th>
     </tr>
 
     <%
@@ -105,21 +120,7 @@
 
 </table>
 
-<div class="login-box">
-    <form action="#">
-        <div class="user-box">
-            <input type="text" id="searchId" placeholder="" name="search">
-            <label>Title name</label>
-        </div>
-        <button type="button" name="search" value="Search" onclick="searchBook()" style="margin: auto 29%;">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Search
-        </button>
-    </form>
-</div>
+
 
 <div class="login-box" style="margin-top: %;">
     <form method="post" action="LogoutServlet">
